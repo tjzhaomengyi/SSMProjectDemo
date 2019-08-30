@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+<!--    配置视图解析器-->
+<!--    <context:component-scan base-package="com.lanappqiao.controller"></context:component-scan>-->
+
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/view/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+
+    <mvc:annotation-driven></mvc:annotation-driven>
+
+    <!--    将控制器所在包加入IOC容器-->
+    <context:component-scan base-package="com.lanqiao.controller">
+
+    </context:component-scan>
+
+<!--    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">-->
+<!--        <property name="basename" value="i18n"></property>-->
+<!--    </bean>-->
+
+<!--    <mvc:view-controller path="SpringMVCHandler/testMvcViewController" view-name="success"></mvc:view-controller>-->
+
+
+<!--    <mvc:default-servlet-handler></mvc:default-servlet-handler>-->
+
+<!--    &lt;!&ndash;1将自定义转换器放入SpringIOC容器&ndash;&gt;-->
+<!--    <bean id = "myConverter" class="com.lanqiao.converter.MyConverter"></bean>-->
+<!--    &lt;!&ndash; 2、将myConverter放入SpringMVC提供的转换器Bean中   &ndash;&gt;-->
+<!--    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">-->
+<!--        <property name="converters">-->
+<!--            <set>-->
+<!--                <ref bean="myConverter"></ref>-->
+<!--            </set>-->
+<!--        </property>-->
+<!--    </bean>-->
+<!--    &lt;!&ndash;    3、将conversionService注册到annotation-driven中&ndash;&gt;-->
+<!--    <mvc:annotation-driven conversion-service="conversionService"></mvc:annotation-driven>-->
+
+<!--    <bean id="formatService" class="org.springframework.format.support.DefaultFormattingConversionService">-->
+<!--    </bean>-->
+
+<!--    <mvc:annotation-driven conversion-service="formatService"></mvc:annotation-driven>-->
+
+
+<!--    &lt;!&ndash;    用于实现文件上传,id要固定&ndash;&gt;-->
+<!--    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">-->
+<!--        <property name="defaultEncoding" value="UTF-8"></property>-->
+<!--        <property name="maxUploadSize" value="102400"></property>-->
+<!--        &lt;!&ndash;        <property name="maxInMemorySize" value=""&ndash;&gt;-->
+<!--    </bean>-->
+
+
+<!--    &lt;!&ndash;    配置拦截器&ndash;&gt;-->
+<!--    <mvc:interceptors>-->
+
+<!--        <mvc:interceptor>-->
+<!--            <mvc:mapping path="/**"/>-->
+<!--            <mvc:exclude-mapping path="/SpringMVCHandler/testUpload"/>-->
+<!--            <bean class="com.lanqiao.interceptor.MyInterceptor"></bean>-->
+<!--        </mvc:interceptor>-->
+
+<!--        <mvc:interceptor>-->
+<!--            <mvc:mapping path="/**"/>-->
+<!--            <mvc:exclude-mapping path="/SpringMVCHandler/testUpload"/>-->
+<!--            <bean class="com.lanqiao.interceptor.MySecondInterceptor"></bean>-->
+<!--        </mvc:interceptor>-->
+<!--    </mvc:interceptors>-->
+
+</beans>

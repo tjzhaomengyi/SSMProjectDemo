@@ -26,6 +26,23 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
+
+
+  <!--  加载spring容器-->
+  <!-- 加载spring容器 -->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:applicationContext.xml
+      classpath:ApplicationContext-Controller.xml</param-value>
+  </context-param>
+
+
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+
+
+
   <servlet>
     <servlet-name>springDispatcherServlet</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -42,6 +59,8 @@
     <url-pattern>/</url-pattern>
     <!--    拦截以user开头的请求-->
   </servlet-mapping>
+
+
 
 
   <!--  增加HttpMethodFilter过滤器，生成put、delete-->

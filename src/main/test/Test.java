@@ -1,5 +1,4 @@
 import com.lanqiao.service.StudentService;
-import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -14,9 +13,12 @@ public class Test {
     @Autowired
     SqlSessionFactoryBean sf;
 
+//    @Qualifier(value="studentService")
+//    StudentService studentService;
+
     @org.junit.Test
     public void testSpringAndMyBatis() {
-        ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+        ApplicationContext ac = new ClassPathXmlApplicationContext("WEB-INF/applicationContext.xml");
         StudentService studentService = ac.getBean("studentService",StudentService.class);
         System.out.println(studentService.queryStudentByStuNo(1));
     }

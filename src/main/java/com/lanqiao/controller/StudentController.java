@@ -2,6 +2,7 @@ package com.lanqiao.controller;
 
 import com.lanqiao.entity.Student;
 import com.lanqiao.service.StudentService;
+import com.lanqiao.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
@@ -28,6 +29,9 @@ public class StudentController {
     @Qualifier(value = "studentService")
     StudentService studentService;
 
+    @Qualifier(value = "testService")
+    TestService testService;
+
     public void setStudentService(StudentService studentService) {
         this.studentService = studentService;
     }
@@ -41,5 +45,10 @@ public class StudentController {
         System.out.println(student);
         map.put("student",student);
         return "result";
+    }
+
+    @RequestMapping("testService")
+    public void testService(){
+        testService.tellService();
     }
 }

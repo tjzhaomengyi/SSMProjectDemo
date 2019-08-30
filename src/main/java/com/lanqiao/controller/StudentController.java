@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import javax.annotation.Resources;
 import java.util.Map;
-
 
 /**
  * @Auther: zhaomengyi
@@ -21,20 +21,20 @@ import java.util.Map;
  * @Description:
  */
 
+@Controller
 @RequestMapping("controller")
-@Controller("studentController")
 public class StudentController {
 
     //控制器依赖于Service
-    @Qualifier(value = "studentService")
+    @Resource(name = "studentService")
     StudentService studentService;
 
-    @Qualifier(value = "testService")
+    @Autowired
     TestService testService;
 
-    public void setStudentService(StudentService studentService) {
-        this.studentService = studentService;
-    }
+//    public void setStudentService(StudentService studentService) {
+//        this.studentService = studentService;
+//    }
 
     @RequestMapping("queryStudentByStuNo/{stuno}")
     public String queryStudentByStuNo(@PathVariable("stuno") Integer stuNo, Map<String,Object> map){
@@ -52,3 +52,4 @@ public class StudentController {
         testService.tellService();
     }
 }
+

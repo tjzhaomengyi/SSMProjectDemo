@@ -12,8 +12,8 @@
     <!-- 自动扫描 -->
     <context:component-scan base-package="com.lanqiao.service"/>
     <context:component-scan base-package="com.lanqiao.mapper"/>
-    <context:component-scan base-package="com.lanqiao.controller"/>
-    <context:component-scan base-package="com.lanqiao.entity"/>
+<!--    <context:component-scan base-package="com.lanqiao.controller"/>-->
+<!--    <context:component-scan base-package="com.lanqiao.entity"/>-->
 
 
 <!--java的properties配置文件-->
@@ -40,6 +40,7 @@
         <property name="mapperLocations" value="classpath:com/lanqiao/mapper/StudentMapper.xml"></property>
     </bean>
 
+
 <!--    Spring整合Mybatis：将Mybatisde的SqlSessionFactory交给Spring-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
@@ -53,9 +54,6 @@
     </bean>
 
     <bean id="testService" class="com.lanqiao.service.impl.TestServiceImpl"></bean>
-<!--给Controller注入Service-->
-<!--    <bean id = "studentController" class="com.lanqiao.controller.StudentController">-->
-<!--        <property name="studentService" ref="studentService"></property>-->
-<!--    </bean>-->
+
 </beans>
 
